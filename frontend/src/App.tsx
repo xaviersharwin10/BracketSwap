@@ -603,10 +603,6 @@ function ReceiptCard({ receiptId, onToast }: { receiptId: number; onToast: (msg:
       args: [BigInt(receiptId), nextMatch.teamA.poolKey, TICK_LOWER, TICK_UPPER, BigInt(rd.usdcEntitlement)],
     })
   }
-  const cashOut = () => {
-    onToast('Cashing out receipt…', 'info')
-    writeContract({ address: ADDRESSES.router as `0x${string}`, abi: ROUTER_ABI, functionName: 'claimWinnings', args: [BigInt(receiptId)] })
-  }
 
   return (
     <div className="receipt-card">
@@ -618,12 +614,15 @@ function ReceiptCard({ receiptId, onToast }: { receiptId: number; onToast: (msg:
       <div className="receipt-usdc">💵 {fmtUsdc(rd.usdcEntitlement)} escrowed</div>
       <div className="receipt-note">This NFT can be transferred — whoever holds it can redeem into the next round.</div>
       <div className="pos-actions">
-        {nextMatch && winningTeamIsA && (
+        {nextMatch && winningTeamIsA ? (
           <button className="btn-rollover" disabled={busy} onClick={redeem}>
             🔄 Redeem into {nextMatch.round} →
           </button>
+        ) : (
+          <p className="muted" style={{ fontSize: '0.8rem', margin: '8px 0 0' }}>
+            ⚽ Final round reached — redeem via direct position rollover or claim through your position.
+          </p>
         )}
-        <button className="btn-primary btn-sm" disabled={busy} onClick={cashOut}>💰 Cash Out</button>
       </div>
     </div>
   )
