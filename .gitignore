@@ -1,0 +1,41 @@
+# Claude Code internal files
+.claude/
+skills-lock.json
+
+# Environment
+.env
+.env.*
+!.env.example
+
+# Dependencies
+node_modules/
+frontend/node_modules/
+
+# Build outputs
+frontend/dist/
+frontend/.vite/
+out/
+cache/
+artifacts/
+
+# Foundry
+bracketswap/cache/
+bracketswap/out/
+bracketswap/broadcast/**/dry-run/
+
+# IDE
+.idea/
+.vscode/
+*.suo
+*.user
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
+npm-debug.log*
+
+# TypeScript
+*.tsbuildinfo
