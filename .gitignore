@@ -21,7 +21,9 @@ artifacts/
 # Foundry
 bracketswap/cache/
 bracketswap/out/
-bracketswap/broadcast/**/dry-run/
+bracketswap/lib/
+bracketswap/broadcast/
+
 
 # IDE
 .idea/
